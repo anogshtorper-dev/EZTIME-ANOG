@@ -122,26 +122,22 @@
 </main>
 
 <script>
-// Keep allowed data per employee
-let allowedData = {};   // employee_id → [{role, subsidiary, hourly_rate}]
+let allowedData = {};
 let currentSub = '';
 
-// Autocomplete: employee name -> employee_id (sets hidden empSelect and triggers existing change handler)
 const empInput  = document.getElementById('empInput');
 const empSelect = document.getElementById('empSelect');
 
-empInput.addEventListener('input', function () {
+empInput.addEventListener('change', function () {
+  // 'change' fires only when the user picks an option from the datalist list
+  // (either by clicking it or pressing Enter on a highlighted item).
+  // This preserves the original behaviour: the dropdown appears on click/focus
+  // and subsidiary/role load only after an actual selection is made.
   const name = this.value.trim();
-  const options = document.querySelectorAll('#empList option');
-
   let foundId = '';
-  options.forEach(opt => {
-    if (opt.value === name) {
-      foundId = opt.dataset.id || '';
-    }
+  document.querySelectorAll('#empList option').forEach(opt => {
+    if (opt.value === name) foundId = opt.dataset.id || '';
   });
-
-  // Update hidden select and trigger existing logic
   empSelect.value = foundId;
   empSelect.dispatchEvent(new Event('change'));
 });
@@ -156,7 +152,6 @@ document.getElementById('empSelect').addEventListener('change', async function()
   const res = await fetch(`/allowed/${eid}`);
   const data = await res.json();
   allowedData[eid] = data;
-  // Build unique subsidiaries
   const subs = [...new Set(data.map(d=>d.subsidiary))].sort();
   subSel.innerHTML = '<option value="">— select —</option>' + subs.map(s=>`<option value="${s}">${s}</option>`).join('');
 });
@@ -185,11 +180,9 @@ async function addShift(){
   const role  = document.getElementById('roleSelect').value;
   const start = document.getElementById('startTime').value;
   const end   = document.getElementById('endTime').value;
-
   if(!eid||!date||!sub||!role||!start||!end){
     showMsg('formMsg','Please fill in all fields.','err'); return;
   }
-
   const res = await fetch('/shifts', {
     method:'POST', headers:{'Content-Type':'application/json'},
     body: JSON.stringify({employee_id:eid, date, subsidiary:sub, role, start_time:start, end_time:end})
@@ -205,12 +198,9 @@ async function calculate(){
   const eid  = document.getElementById('empSelect').value;
   const date = document.getElementById('dateInput').value;
   if(!eid||!date){ showMsg('formMsg','Select employee and date first.','err'); return; }
-
-  // Fetch daily result
   const res = await fetch(`/daily/${eid}/${date}`);
   const d = await res.json();
   if(!res.ok){ document.getElementById('resultsArea').innerHTML=`<div class="msg msg-err">${d.detail}</div>`; return; }
-
   renderResults(d);
   renderShiftsTable(d.shifts, eid, date);
 }
@@ -220,18 +210,14 @@ function renderResults(d){
   if(!d.shifts||d.shifts.length===0){
     area.innerHTML='<p style="color:#aaa;font-size:.9rem">No shifts found for this employee on this date.</p>'; return;
   }
-
   const nightBadge = d.night_hours_in_window>=2
     ? `<span class="badge badge-night">🌙 Night Rule Active (${d.night_hours_in_window.toFixed(2)}h in window)</span>` : '';
   const otBadge = d.hours_125>0||d.hours_150>0
     ? `<span class="badge badge-ot">⚡ Overtime Applied</span>` : '';
-
-  // Breakdown
   let subRows = Object.entries(d.hours_by_subsidiary).map(([k,v])=>
     `<div class="breakdown-row"><span>${k}</span><span>${v.toFixed(2)}h</span></div>`).join('');
   let roleRows = Object.entries(d.hours_by_role).map(([k,v])=>
     `<div class="breakdown-row"><span>${k}</span><span>${v.toFixed(2)}h</span></div>`).join('');
-
   area.innerHTML = `
     <div style="margin-bottom:12px;font-size:.9rem;color:#444">
       <strong>${d.employee_name}</strong> · ${d.date}
@@ -268,13 +254,10 @@ async function deleteShift(shiftId, eid, date){
 }
 
 function renderShiftsTable(shifts, eid, date){
-  // We need IDs – re-fetch from DB via a small workaround: fetch shifts list
   fetchShiftsForTable(eid, date);
 }
 
 async function fetchShiftsForTable(eid, date){
-  // We embed the shifts list in the daily result; but we need IDs for delete.
-  // Fetch via a dedicated lightweight call
   const res = await fetch(`/shifts_list/${eid}/${date}`);
   const rows = await res.json();
   const el = document.getElementById('shiftsTable');
