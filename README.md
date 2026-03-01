@@ -6,20 +6,20 @@ A modern, fast, and user-friendly time tracking and payroll calculation system w
 
 ## 📑 Table of Contents
 
-1. [✨ Key Features](##key-features)
-2. [🚀 Quick Start](##quick-start)
-3. [📂 Project Structure](##project-structure)
-4. [⚙️ Installation Guide](##installation-guide)
-5. [🌐 Using the System](##using-the-system)
-6. [📡 API Endpoints](##api-endpoints)
-7. [🔐 Security & Authentication](##security--authentication)
-8. [💼 Business Rules](##business-rules)
-9. [🧪 Testing & Quality](##testing--quality)
-10. [📝 Postman Examples](##postman-examples)
-11. [🐛 Troubleshooting](##troubleshooting)
+1. [✨ Key Features](#key-features)
+2. [🚀 Quick Start](#quick-start)
+3. [📂 Project Structure](#project-structure)
+4. [⚙️ Installation Guide](#installation-guide)
+5. [🌐 Using the System](#using-the-system)
+6. [📡 API Endpoints](#api-endpoints)
+7. [🔐 Security & Authentication](#security--authentication)
+8. [💼 Business Rules](#business-rules)
+9. [🧪 Testing & Quality](#testing--quality)
+10. [📝 Postman Examples](#postman-examples)
+11. [🐛 Troubleshooting](#troubleshooting)
 
 ---
-
+<a name="key-features"></a>
 ## ✨ Key Features
 
 ### 🎯 Leading System Features
