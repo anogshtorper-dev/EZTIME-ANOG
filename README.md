@@ -1,111 +1,78 @@
-🕐 EZTIME-TMP – Time & Attendance Payroll Management System
+# 🕐 EZTIME-TMP – Time & Attendance Payroll Management System
 
 A modern, fast, and user-friendly time tracking and payroll calculation system with a beautiful web interface and comprehensive REST API.
 
-📑 Table of Contents
+---
 
-✨ Key Features
+## 📑 Table of Contents
 
-🚀 Quick Start
+1. [✨ Key Features](#key-features)
+2. [🚀 Quick Start](#quick-start)
+3. [📂 Project Structure](#project-structure)
+4. [⚙️ Installation Guide](#installation-guide)
+5. [🌐 Using the System](#using-the-system)
+6. [📡 API Endpoints](#api-endpoints)
+7. [🔐 Security & Authentication](#security--authentication)
+8. [💼 Business Rules](#business-rules)
+9. [🧪 Testing & Quality](#testing--quality)
+10. [📝 Postman Examples](#postman-examples)
+11. [🐛 Troubleshooting](#troubleshooting)
 
-📂 Project Structure
+---
 
-⚙️ Installation Guide
+## ✨ Key Features
 
-🌐 Using the System
+### 🎯 Leading System Features
 
-📡 API Endpoints
+#### 1. 📱 Smart User Interface
+- ✅ Autocomplete employee selection
+- ✅ Responsive design for mobile/tablet
+- ✅ Real-time visual feedback (success/error messages)
+- ✅ Modern, clean design (Material Design principles)
 
-🔐 Security & Authentication
+#### 2. 💰 Automatic Payroll Calculation
+- ✅ Instant salary calculation based on shifts
+- ✅ Support for overtime with multiplier rates (100%, 125%, 150%)
+- ✅ Automatic night shift detection (22:00-06:00)
+- ✅ Daily deficit calculation
 
-💼 Business Rules
+#### 3. 🌙 Advanced Business Rules
+- ✅ Max Rate Rule - uses highest rate for entire day
+- ✅ Midnight Crossing - correctly handles shifts past midnight
+- ✅ Accurate night hours calculation
+- ✅ Support for multiple shifts per day
 
-🧪 Testing & Quality
+#### 4. 📊 Deep Data Analytics
+- ✅ Hours breakdown by subsidiary
+- ✅ Hours breakdown by role
+- ✅ Detailed daily shift report
+- ✅ Shift deletion with automatic recalculation
 
-📝 Postman Examples
+#### 5. 🔌 Professional REST API
+- ✅ Bearer Token authentication
+- ✅ Multiple data retrieval endpoints
+- ✅ Optional parameters support
+- ✅ Standard HTTP status codes
 
-🚀 Production Deployment
+#### 6. 🗄️ Database Management
+- ✅ Automatic database creation on first run
+- ✅ Automatic Excel data import
+- ✅ Real-time data updates
+- ✅ Support for UTF-8 and special characters
 
-🛠️ Development Setup
+#### 7. 🔒 Security & Compliance
+- ✅ Bearer Token authentication
+- ✅ CORS support for external services
+- ✅ Input validation on all endpoints
+- ✅ Precise timezone (Asia/Jerusalem)
 
-🤝 Contributing Guidelines
+---
 
-🐛 Troubleshooting
+## 🚀 Quick Start
 
-✨ Key Features
-🎯 Leading System Features
-1. 📱 Smart User Interface
+### Get Running in 60 Seconds
 
-✅ Autocomplete employee selection
-
-✅ Responsive design for mobile/tablet
-
-✅ Real-time visual feedback (success/error messages)
-
-✅ Modern, clean design (Material Design principles)
-
-2. 💰 Automatic Payroll Calculation
-
-✅ Instant salary calculation based on shifts
-
-✅ Support for overtime with multiplier rates (100%, 125%, 150%)
-
-✅ Automatic night shift detection (22:00-06:00)
-
-✅ Daily deficit calculation
-
-3. 🌙 Advanced Business Rules
-
-✅ Max Rate Rule - uses highest rate for entire day
-
-✅ Midnight Crossing - correctly handles shifts past midnight
-
-✅ Accurate night hours calculation
-
-✅ Support for multiple shifts per day
-
-4. 📊 Deep Data Analytics
-
-✅ Hours breakdown by subsidiary
-
-✅ Hours breakdown by role
-
-✅ Detailed daily shift report
-
-✅ Shift deletion with automatic recalculation
-
-5. 🔌 Professional REST API
-
-✅ Bearer Token authentication
-
-✅ Multiple data retrieval endpoints
-
-✅ Optional parameters support
-
-✅ Standard HTTP status codes
-
-6. 🗄️ Database Management
-
-✅ Automatic database creation on first run
-
-✅ Automatic Excel data import
-
-✅ Real-time data updates
-
-✅ Support for UTF-8 and special characters
-
-7. 🔒 Security & Compliance
-
-✅ Bearer Token authentication
-
-✅ CORS support for external services
-
-✅ Input validation on all endpoints
-
-✅ Precise timezone (Asia/Jerusalem)
-
-🚀 Quick Start
-Get Running in 60 Seconds
+```bash
 # 1. Create Virtual Environment
 python -m venv venv
 source venv/bin/activate  # macOS/Linux
@@ -120,11 +87,16 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 # 4. Open Browser
 http://localhost:8000
+```
 
-System is now running! ✅
+**System is now running!** ✅
 
-📂 Project Structure
-EZTIME-TMP/
+---
+
+## 📂 Project Structure
+
+```
+EZTIME-ANOG/
 │
 ├── 📄 main.py                      ← FastAPI Server + Business Logic
 ├── 📄 requirements.txt             ← Python Dependencies
@@ -135,133 +107,185 @@ EZTIME-TMP/
 │
 └── 📁 templates/
     └── 🌐 index.html              ← Web User Interface
-Important Files Explanation
-File	Description
-main.py	All business logic, API routes, database operations
-requirements.txt	List of all required Python libraries
-EZTIME_DATA.xlsx	Your data file (employees, rates, shifts)
-eztime.db	Database file (created automatically on first run)
-templates/index.html	Web user interface
-⚙️ Installation Guide
-Prerequisites
+```
 
-✅ Python 3.9+ - Check: python --version
+### Important Files Explanation
 
-✅ pip - Package manager (usually comes with Python)
+| File | Description |
+|------|-------------|
+| `main.py` | All business logic, API routes, database operations |
+| `requirements.txt` | List of all required Python libraries |
+| `EZTIME_DATA.xlsx` | Your data file (employees, rates, shifts) |
+| `eztime.db` | Database file (created automatically on first run) |
+| `templates/index.html` | Web user interface |
 
-✅ Excel File - EZTIME_DATA.xlsx with your data
+---
 
-✅ Git (optional) - For cloning the repository
+## ⚙️ Installation Guide
 
-Step 1️⃣ - Clone Repository
+### Prerequisites
+
+- ✅ **Python 3.9+** - Check: `python --version`
+- ✅ **pip** - Package manager (usually comes with Python)
+- ✅ **Excel File** - `EZTIME_DATA.xlsx` with your data
+- ✅ **Git** (optional) - For cloning the repository
+
+### Step 1️⃣ - Clone Repository
+
+```bash
 git clone https://github.com/anogshtorper-dev/EZTIME-ANOG.git
 cd EZTIME-ANOG
-Step 2️⃣ - Create Virtual Environment
+```
 
-macOS/Linux:
+### Step 2️⃣ - Create Virtual Environment
 
+**macOS/Linux:**
+```bash
 python -m venv venv
 source venv/bin/activate
+```
 
-Windows (Command Prompt):
-
+**Windows (Command Prompt):**
+```bash
 python -m venv venv
 venv\Scripts\activate
+```
 
-Windows (PowerShell):
-
+**Windows (PowerShell):**
+```powershell
 python -m venv venv
 .\venv\Scripts\Activate.ps1
+```
 
-Success indicator:
+**Success indicator:**
+```
+(venv) user@computer:~/EZTIME-ANOG$
+```
 
-(venv) user@computer:~/EZTIME-TMP$
-Step 3️⃣ - Install Dependencies
+### Step 3️⃣ - Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-Installation time: ~30-60 seconds
+**Installation time:** ~30-60 seconds
 
-Libraries installed:
+**Libraries installed:**
+- 📦 fastapi==0.111.0
+- 📦 uvicorn[standard]==0.29.0
+- 📦 jinja2==3.1.4
+- 📦 pandas==2.2.2
+- 📦 openpyxl==3.1.2
+- 📦 pydantic==2.7.1
+- 📦 python-multipart==0.0.9
+- 📦 tzdata==2024.1
 
-📦 fastapi==0.111.0
+### Step 4️⃣ - Prepare Data File
 
-📦 uvicorn[standard]==0.29.0
-
-📦 jinja2==3.1.4
-
-📦 pandas==2.2.2
-
-📦 openpyxl==3.1.2
-
-📦 pydantic==2.7.1
-
-📦 python-multipart==0.0.9
-
-📦 tzdata==2024.1
-
-Step 4️⃣ - Prepare Data File
-# Copy EZTIME_DATA.xlsx to project root
+```bash
+# Copy EZTIME_DATA.xlsx to project root if it's not there yet
 cp /path/to/EZTIME_DATA.xlsx ./EZTIME_DATA.xlsx
+```
 
-Excel file must contain three sheets:
+**Excel file must contain three sheets:**
 
-Sheet 1 - Employees
+#### Sheet 1 - Employees
+```
 employee_id  | name        | daily_standard
 E1022        | John Doe    | 8.0
 E1023        | Jane Smith  | 8.5
-Sheet 2 - Rates & Roles
+```
+
+#### Sheet 2 - Rates & Roles
+```
 employee_id | role              | subsidiary    | hourly_rate
 E1022       | Warehouse Manager | Subsidiary A  | 62.0
 E1022       | Picker            | Subsidiary B  | 50.0
 E1023       | Manager           | Subsidiary A  | 75.0
-Sheet 3 - Shifts
+```
+
+#### Sheet 3 - Shifts
+```
 employee_id | date       | start_time | end_time | subsidiary   | role
 E1022       | 2026-01-19 | 07:45      | 16:30    | Subsidiary A | Warehouse Manager
 E1023       | 2026-01-19 | 08:00      | 17:00    | Subsidiary A | Manager
-Step 5️⃣ - Start Server
+```
+
+### Step 5️⃣ - Start Server
+
+```bash
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
 
-Expected output:
-
+**Expected output:**
+```
 INFO:     Uvicorn running on http://0.0.0.0:8000
 INFO:     Application startup complete
 [SEED] Sheet names: ['Employees', 'Rates', 'Shifts']
 [SEED] DB already seeded – skipping.
 [AUTH] Token: 'demo-token' (default)
-Step 6️⃣ - Open in Browser
+```
+
+### Step 6️⃣ - Open in Browser
+
+```
 http://localhost:8000
+```
 
-Congratulations! System is ready to use! ✅
+**Congratulations!** System is ready to use! ✅
 
-🌐 Using the System
-Complete User Guide
-1. Select Employee
+---
+
+## 🌐 Using the System
+
+### Complete User Guide
+
+#### 1. Select Employee
+```
 1. Type employee name in the "Employee" field
 2. Select from the displayed list
 3. Or use "📱 Scan QR" to scan QR code
-2. Pick Date
+```
+
+#### 2. Pick Date
+```
 1. Click on "Date" field
 2. Select date from calendar widget
 3. Or type manually in format: YYYY-MM-DD
-3. Choose Subsidiary & Role
+```
+
+#### 3. Choose Subsidiary & Role
+```
 1. Select Subsidiary from dropdown (auto-filtered by employee)
 2. Select Role from dropdown (auto-filtered by subsidiary)
 3. Fields update automatically
-4. Add Work Hours
+```
+
+#### 4. Add Work Hours
+```
 1. Enter Start Time in HH:MM format (e.g., 07:45)
 2. Enter End Time in HH:MM format (e.g., 16:30)
 3. Click "+ Add Shift"
-5. Calculate Payroll
+```
+
+#### 5. Calculate Payroll
+```
 1. Click "⟳ Calculate"
 2. System automatically calculates all data
 3. View detailed report in "Daily Payroll Result" panel
-6. Edit & Delete
+```
+
+#### 6. Edit & Delete
+```
 1. See shift in table? Click ✕ to delete
 2. System automatically recalculates
-Payroll Results Report
+```
+
+### Payroll Results Report
 
 When clicking "Calculate", you get a detailed report including:
 
+```
 📊 Daily Payroll Result
 
 👤 Employee: John Doe | 2026-01-19
@@ -293,31 +317,47 @@ When clicking "Calculate", you get a detailed report including:
 📋 Shifts Table:
    [1] Warehouse Manager @ Subsidiary A
        07:45 → 16:30 (8.75h) | ₪62.0/h
-📡 API Endpoints
-🌍 UI Endpoints (No Authentication)
-1. List All Employees
+```
+
+---
+
+## 📡 API Endpoints
+
+### 🌍 UI Endpoints (No Authentication)
+
+#### 1. List All Employees
+```http
 GET /employees
+```
 
-Response:
-
+**Response:**
+```json
 [
   {"id": "E1022", "name": "John Doe", "daily_standard": 8.0},
   {"id": "E1023", "name": "Jane Smith", "daily_standard": 8.5}
 ]
-2. Get Available Roles for Employee
+```
+
+#### 2. Get Available Roles for Employee
+```http
 GET /allowed/{employee_id}
+```
 
-Example:
-
+**Example:**
+```http
 GET /allowed/E1022
+```
 
-Response:
-
+**Response:**
+```json
 [
   {"role": "Warehouse Manager", "subsidiary": "Subsidiary A", "hourly_rate": 62.0},
   {"role": "Picker", "subsidiary": "Subsidiary B", "hourly_rate": 50.0}
 ]
-3. Add Shift
+```
+
+#### 3. Add Shift
+```http
 POST /shifts
 
 Content-Type: application/json
@@ -330,19 +370,281 @@ Content-Type: application/json
   "start_time": "07:45",
   "end_time": "16:30"
 }
+```
 
-Response:
-
+**Response:**
+```json
 {"status": "ok", "message": "Shift added."}
-4. Calculate Daily Payroll
+```
+
+#### 4. Calculate Daily Payroll
+```http
 GET /daily/{employee_id}/{date}
+```
 
-Example:
-
+**Example:**
+```http
 GET /daily/E1022/2026-01-19
+```
 
-Response:
+**Response:**
+```json
+{
+  "employee_id": "E1022",
+  "employee_name": "John Doe",
+  "date": "2026-01-19",
+  "total_hours": 8.75,
+  "hours_100": 8.0,
+  "hours_125": 0.75,
+  "hours_150": 0.0,
+  "salary_simulation": 554.13,
+  "max_rate": 62.0,
+  "overtime_threshold": 8,
+  "night_hours_in_window": 0.0,
+  "daily_deficit": 0.25
+}
+```
 
+#### 5. List Shifts for Date
+```http
+GET /shifts_list/{employee_id}/{date}
+```
+
+**Example:**
+```http
+GET /shifts_list/E1022/2026-01-19
+```
+
+#### 6. Delete Shift
+```http
+DELETE /shifts/{shift_id}
+```
+
+**Example:**
+```http
+DELETE /shifts/1
+```
+
+### 🔒 v1 API (Requires Bearer Token)
+
+#### Calculate Payroll via API
+```http
+GET /v1/payroll/daily?employee_id=E1022&date=2026-01-19
+Authorization: Bearer demo-token
+```
+
+**Query Parameters:**
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| employee_id | string | ✅ | — | Employee ID |
+| date | string | ✅ | — | Date (YYYY-MM-DD) |
+| include_shifts | boolean | ❌ | true | Include shift details |
+| include_breakdown | boolean | ❌ | true | Include hours breakdown |
+
+---
+
+## 🔐 Security & Authentication
+
+### Default Token
+
+```
+demo-token
+```
+
+### Change API Token
+
+**Using Environment Variable:**
+
+```bash
+export EZTIME_API_TOKEN=my-secret-token
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+
+**Windows (PowerShell):**
+```powershell
+$env:EZTIME_API_TOKEN="my-secret-token"
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+
+### Token Security
+
+| ⚠️ Warning | Action |
+|-----------|--------|
+| **Don't use default in production** | Change to strong, random token |
+| **Don't put token in code** | Use environment variables only |
+| **Don't share token in files** | Keep it secret and secure |
+
+### API Request with Token
+
+```bash
+curl -H "Authorization: Bearer your-secret-token" \
+  "http://localhost:8000/v1/payroll/daily?employee_id=E1022&date=2026-01-19"
+```
+
+---
+
+## 💼 Business Rules
+
+### Payroll Calculation - Detailed Explanation
+
+#### 1. Threshold Determination
+
+```
+IF night_hours_in_window >= 2.0
+  THEN threshold = 7 hours
+ELSE
+  threshold = 8 hours
+```
+
+**Example:**
+- Employee worked 2.5 night hours → threshold = 7 hours
+- Employee worked 1 night hour → threshold = 8 hours
+
+#### 2. Hours Distribution
+
+```
+hours_100% = MIN(total_hours, threshold)
+hours_125% = MAX(0, MIN(total_hours - threshold, 2.0))
+hours_150% = MAX(0, total_hours - threshold - 2.0)
+```
+
+**Example with 10 total hours:**
+```
+threshold = 8
+hours_100% = MIN(10, 8) = 8 hours
+hours_125% = MIN(10-8, 2) = 2 hours
+hours_150% = 10-8-2 = 0 hours
+```
+
+#### 3. Salary Calculation
+
+```
+salary = (hours_100 × rate) + (hours_125 × rate × 1.25) + (hours_150 × rate × 1.5)
+```
+
+**Example with ₪50/hour:**
+```
+salary = (8 × 50) + (2 × 50 × 1.25) + (0 × 50 × 1.5)
+salary = 400 + 125 + 0
+salary = ₪525
+```
+
+#### 4. Daily Deficit
+
+```
+deficit = MAX(0, daily_standard - total_hours)
+```
+
+**Example:**
+- daily_standard = 9 hours
+- total_hours = 8.75 hours
+- deficit = MAX(0, 9 - 8.75) = 0.25 hours
+
+### Night Work (Night Window)
+
+**Night Window:** 22:00 → 06:00
+
+**Night Hours Calculation:**
+- Each hour within this window counts as "night hour"
+- If ≥2 night hours → threshold becomes 7 hours
+
+**Examples:**
+```
+Shift 20:00-23:00
+├─ Night hours: 1 hour (23:00-24:00)
+└─ Threshold: 8 hours
+
+Shift 22:00-06:00
+├─ Night hours: 8 hours (entire shift)
+└─ Threshold: 7 hours
+
+Shift 04:00-08:00
+├─ Night hours: 2 hours (04:00-06:00)
+└─ Threshold: 7 hours
+```
+
+### Max Rate Rule
+
+**Rule:** If employee worked with different rates on same day - use highest rate
+
+**Example:**
+```
+Shift 1: 8 hours @ Subsidiary A @ ₪50/hour
+Shift 2: 2 hours @ Subsidiary B @ ₪75/hour
+
+Max Rate = ₪75 (highest)
+Salary = (8+2) × ₪75 × [rates] = ...
+```
+
+---
+
+## 🧪 Testing & Quality
+
+### Run Unit Tests
+
+```bash
+# Basic test
+python test_payroll.py
+
+# Verbose test with pytest
+python -m pytest test_payroll.py -v
+
+# With coverage report
+python -m pytest test_payroll.py --cov=main
+```
+
+### What's Tested
+
+- ✅ Overtime bucket calculations (3 scenarios)
+- ✅ Night window detection
+- ✅ Early morning shifts (04:00-08:00)
+- ✅ Midnight crossing logic (23:00-03:00)
+- ✅ Bearer token validation
+- ✅ Timezone handling (Asia/Jerusalem)
+- ✅ Missing parameter validation
+
+### Example Test
+
+```python
+import unittest
+from main import compute_daily
+
+class TestPayroll(unittest.TestCase):
+    def test_simple_shift(self):
+        result = compute_daily("E1022", "2026-01-19")
+        self.assertEqual(result["total_hours"], 8.75)
+        self.assertEqual(result["hours_100"], 8.0)
+        
+if __name__ == '__main__':
+    unittest.main()
+```
+
+---
+
+## 📝 Postman Examples
+
+### ✅ Example 1 - Successful Request (200 OK)
+
+**Setup:**
+```
+Method:  GET
+URL:     http://localhost:8000/v1/payroll/daily
+         ?employee_id=E1022&date=2026-01-19
+Headers: Authorization: Bearer demo-token
+```
+
+**Steps in Postman:**
+1. Open Postman
+2. Click "New Request"
+3. Select "GET"
+4. Paste the URL
+5. Go to "Headers" tab
+6. Add: `Authorization: Bearer demo-token`
+7. Click "Send"
+
+**Response:**
+```json
 {
   "employee_id": "E1022",
   "employee_name": "John Doe",
@@ -357,154 +659,195 @@ Response:
   "night_hours_in_window": 0.0,
   "night_rule_active": false,
   "daily_standard": 9.0,
-  "daily_deficit": 0.25
+  "daily_deficit": 0.25,
+  "calculated_at": "2026-01-19T10:00:00+02:00"
 }
-5. List Shifts for Date
-GET /shifts_list/{employee_id}/{date}
+```
 
-Example:
+### ❌ Example 2 - Invalid Token (401)
 
-GET /shifts_list/E1022/2026-01-19
-6. Delete Shift
-DELETE /shifts/{shift_id}
+```
+Headers: Authorization: Bearer wrong-token
+```
 
-Example:
+**Response:**
+```json
+{
+  "error": {
+    "code": "UNAUTHORIZED",
+    "message": "Invalid or missing API token"
+  }
+}
+```
 
-DELETE /shifts/1
-🔒 v1 API (Requires Bearer Token)
-Calculate Payroll via API
-GET /v1/payroll/daily?employee_id=E1022&date=2026-01-19
-Authorization: Bearer demo-token
+### ❌ Example 3 - Employee Not Found (404)
 
-Query Parameters:
+```
+URL: /v1/payroll/daily?employee_id=NOTEXIST&date=2026-01-19
+```
 
-Name	Type	Required	Default	Description
-employee_id	string	✅	—	Employee ID
-date	string	✅	—	Date (YYYY-MM-DD)
-include_shifts	boolean	❌	true	Include shift details
-include_breakdown	boolean	❌	true	Include hours breakdown
-🔐 Security & Authentication
-Default Token
-demo-token
-Change API Token
+**Response:**
+```json
+{
+  "error": {
+    "code": "EMPLOYEE_NOT_FOUND",
+    "message": "Employee not found"
+  }
+}
+```
 
-Using Environment Variable:
+### ❌ Example 4 - Missing Parameter (400)
 
-export EZTIME_API_TOKEN=my-secret-token
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+URL: /v1/payroll/daily?employee_id=E1022
+```
 
-Windows (PowerShell):
+**Response:**
+```json
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Missing required parameter: date"
+  }
+}
+```
 
-$env:EZTIME_API_TOKEN="my-secret-token"
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-Token Security
-⚠️ Warning	Action
-Don't use default in production	Change to strong, random token
-Don't put token in code	Use environment variables only
-Don't share token in files	Keep it secret and secure
-API Request with Token
-curl -H "Authorization: Bearer your-secret-token" \
-  "http://localhost:8000/v1/payroll/daily?employee_id=E1022&date=2026-01-19"
-💼 Business Rules
-Payroll Calculation - Detailed Explanation
-1. Threshold Determination
-IF night_hours_in_window >= 2.0
-  THEN threshold = 7 hours
-ELSE
-  threshold = 8 hours
+---
 
-Example:
 
-Employee worked 2.5 night hours → threshold = 7 hours
 
-Employee worked 1 night hour → threshold = 8 hours
+## 🐛 Troubleshooting
 
-2. Hours Distribution
-hours_100% = MIN(total_hours, threshold)
-hours_125% = MAX(0, MIN(total_hours - threshold, 2.0))
-hours_150% = MAX(0, total_hours - threshold - 2.0)
+### Common Issues & Solutions
 
-Example with 10 total hours:
+#### 🔴 Port 8000 Already in Use
 
-threshold = 8
-hours_100% = MIN(10, 8) = 8 hours
-hours_125% = MIN(10-8, 2) = 2 hours
-hours_150% = 10-8-2 = 0 hours
-3. Salary Calculation
-salary = (hours_100 × rate) + (hours_125 × rate × 1.25) + (hours_150 × rate × 1.5)
+```bash
+# Check what's using port 8000
+lsof -i :8000  # macOS/Linux
 
-Example with ₪50/hour:
+# Or
+netstat -ano | findstr :8000  # Windows
 
-salary = (8 × 50) + (2 × 50 × 1.25) + (0 × 50 × 1.5)
-salary = 400 + 125 + 0
-salary = ₪525
-4. Daily Deficit
-deficit = MAX(0, daily_standard - total_hours)
+# Solution: use different port
+uvicorn main:app --port 8001
+```
 
-Example:
+#### 🔴 `requirements.txt` Not Found
 
-daily_standard = 9 hours
+```bash
+# Create the file
+cat > requirements.txt << 'EOF'
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+jinja2==3.1.4
+pandas==2.2.2
+openpyxl==3.1.2
+pydantic==2.7.1
+python-multipart==0.0.9
+tzdata==2024.1
+EOF
+```
 
-total_hours = 8.75 hours
+#### 🔴 Excel File Not Found
 
-deficit = MAX(0, 9 - 8.75) = 0.25 hours
+```bash
+# Verify file exists
+ls -la EZTIME_DATA.xlsx  # macOS/Linux
 
-Night Work (Night Window)
+# Or
+dir EZTIME_DATA.xlsx  # Windows
 
-Night Window: 22:00 → 06:00
+# If missing, copy it
+cp /path/to/EZTIME_DATA.xlsx ./
+```
 
-Night Hours Calculation:
+#### 🔴 Database Already Seeded
 
-Each hour within this window counts as "night hour"
+```bash
+# Delete the database
+rm eztime.db  # macOS/Linux
+del eztime.db  # Windows
 
-If ≥2 night hours → threshold becomes 7 hours
+# Restart server - it will recreate automatically
+uvicorn main:app --reload
+```
 
-Examples:
+#### 🔴 No Employees Showing
 
-Shift 20:00-23:00
-├─ Night hours: 1 hour (23:00-24:00)
-└─ Threshold: 8 hours
+**Check:**
+1. Excel file has Employees sheet?
+2. Correct columns? (employee_id, name, daily_standard)
+3. Data format accepted?
 
-Shift 22:00-06:00
-├─ Night hours: 8 hours (entire shift)
-└─ Threshold: 7 hours
+**Fix:**
+```bash
+# Check database
+sqlite3 eztime.db
+sqlite> SELECT COUNT(*) FROM Employees;
+```
 
-Shift 04:00-08:00
-├─ Night hours: 2 hours (04:00-06:00)
-└─ Threshold: 7 hours
-Max Rate Rule
+#### 🔴 Token Not Working
 
-Rule: If employee worked with different rates on same day - use highest rate
+```bash
+# Test your token
+curl -H "Authorization: Bearer demo-token" \
+  http://localhost:8000/v1/payroll/daily?employee_id=E1022&date=2026-01-19
 
-Example:
+# Or change token
+export EZTIME_API_TOKEN=my-new-token
+uvicorn main:app --reload
+```
 
-Shift 1: 8 hours @ Subsidiary A @ ₪50/hour
-Shift 2: 2 hours @ Subsidiary B @ ₪75/hour
+#### 🔴 Timezone Not Correct
 
-Max Rate = ₪75 (highest)
-Salary = (8+2) × ₪75 × [rates] = ...
-🧪 Testing & Quality
-Run Unit Tests
-# Basic test
-python test_payroll.py
+```bash
+# Check timezone
+python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('Asia/Jerusalem')))"
 
-# Verbose test with pytest
-python -m pytest test_payroll.py -v
+# If not working, install tzdata
+pip install tzdata
+```
 
-# With coverage report
-python -m pytest test_payroll.py --cov=main
-What's Tested
+### Debug Mode
 
-✅ Overtime bucket calculations (3 scenarios)
+```bash
+# Run with debug logging
+LOGLEVEL=debug uvicorn main:app --reload
 
-✅ Night window detection
+# Or in code
+import logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+logger.debug("Debug message")
+logger.info("Info message")
+logger.error("Error message")
+```
 
-✅ Early morning shifts (04:00-08:00)
 
-✅ Midnight crossing logic (23:00-03:00)
+## 📞 Getting Help
 
-✅ Bearer token validation
+### Resources
 
-✅ Timezone handling (Asia/Jerusalem)
+1. **Documentation:** This README file
 
-✅ Missing parameter validation
+### Report an Issue
+
+When there's a problem:
+1. Email: anogshtorper@gmail.com
+
+---
+
+## 📄 License & Credits
+
+**Project:** EZTIME-ANOG  
+**Version:** 1.0  
+**Last Updated:** 01-03-2026  
+**Repository:** https://github.com/anogshtorper-dev/EZTIME-ANOG 
+**Author:** anogshtorper-dev  
+
+---
+
+**Tip:** Bookmark this README for quick reference!
+
+**Happy time tracking! ⏰✨**
