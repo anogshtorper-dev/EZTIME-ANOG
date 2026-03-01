@@ -68,6 +68,7 @@ A modern, fast, and user-friendly time tracking and payroll calculation system w
 
 ---
 
+<a name="quick-start"></a>
 ## 🚀 Quick Start
 
 ### Get Running in 60 Seconds
@@ -93,6 +94,7 @@ http://localhost:8000
 
 ---
 
+<a name="project-structure"></a>
 ## 📂 Project Structure
 
 ```
@@ -121,6 +123,7 @@ EZTIME-ANOG/
 
 ---
 
+<a name="installation-guide"></a>
 ## ⚙️ Installation Guide
 
 ### Prerequisites
@@ -236,6 +239,7 @@ http://localhost:8000
 
 ---
 
+<a name="using-the-system"></a>
 ## 🌐 Using the System
 
 ### Complete User Guide
@@ -321,6 +325,7 @@ When clicking "Calculate", you get a detailed report including:
 
 ---
 
+<a name="api-endpoints"></a>
 ## 📡 API Endpoints
 
 ### 🌍 UI Endpoints (No Authentication)
@@ -444,6 +449,7 @@ Authorization: Bearer demo-token
 
 ---
 
+<a name="security--authentication"></a>
 ## 🔐 Security & Authentication
 
 ### Default Token
@@ -484,6 +490,7 @@ curl -H "Authorization: Bearer your-secret-token" \
 
 ---
 
+<a name="business-rules"></a>
 ## 💼 Business Rules
 
 ### Payroll Calculation - Detailed Explanation
@@ -579,6 +586,7 @@ Salary = (8+2) × ₪75 × [rates] = ...
 
 ---
 
+<a name="testing--quality"></a>
 ## 🧪 Testing & Quality
 
 ### Run Unit Tests
@@ -622,6 +630,7 @@ if __name__ == '__main__':
 
 ---
 
+<a name="postman-examples"></a>
 ## 📝 Postman Examples
 
 ### ✅ Example 1 - Successful Request (200 OK)
@@ -715,7 +724,7 @@ URL: /v1/payroll/daily?employee_id=E1022
 ---
 
 
-
+<a name="troubleshooting"></a>
 ## 🐛 Troubleshooting
 
 ### Common Issues & Solutions
